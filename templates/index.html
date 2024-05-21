@@ -2,14 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/styles.css">
 </head>
 <body>
-    <h1>Hello World</h1>
-    <h1>{{4*6}}</h1>
-    <h1>Random Number {{num}}</h1>
-    <a href="{{ url_for('get_blogs', num=3) }}">Go to Blog</a>
+<div class="wrapper">
+    <div class="top">
+        <div class="title"><h1>My Blog</h1></div>
+    </div>
+    {% for blog in all_blogs: %}
+    <div class="content">
+        <div class="card">
+            <h2>{{blog['title']}}</h2>
+            <p class="text">{{blog['subtitle']}} </p>
+            <a href="{{url_for('get_blog', id=blog['id']-1)}}">Read</a>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- <div class="content">
+        <div class="card">
+            <h2>Another blog post</h2>
+            <p class="text">Lorem ipsum dolor sit </p>
+            <a href="#">Read</a>
+        </div>
+    </div> -->
+</div>
 </body>
-<footer>Current Year: {{curr_year}}</footer>
+<footer>
+    <p>Made with ♥️ in London.</p>
+</footer>
 </html>
